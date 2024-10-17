@@ -14,6 +14,29 @@ import java.util.List;
  * Output: 5 2
  */
 public class LeadersInAnArray {
+
+    // Brute Force Approach
+    public static List<Integer> findLeaders1(int[] nums) {
+        List<Integer> leaders = new ArrayList<>();
+        int n = nums.length;
+        // outer loop iterates through all each element to compare with all the inner loop elements
+        for (int i = 0; i < n; i++) {
+            int j;
+            // inner loop iterates from (i + 1) -> n for each element of outer loop
+            for (j = i + 1; j < n; j++) {
+                if (nums[i] <= nums[j]) {
+                    break;
+                }
+            }
+            // if j reaches end of the inner loop then current element contains max value from all the values of its left
+            if (j == n) {
+                leaders.add(nums[i]);
+            }
+        }
+        return leaders;
+    }
+
+    // optimized approach
     public static List<Integer> findLeaders(int[] nums) {
         List<Integer> leaders = new ArrayList<>();
 
@@ -39,8 +62,9 @@ public class LeadersInAnArray {
     public static void main(String[] args) {
         int[] nums = {16, 17, 4, 3, 5, 2};
         int[] nums1 = {1, 2, 3, 4, 5, 2};
-        System.out.println(findLeaders(nums));
-        System.out.println(findLeaders(nums1));
+        System.out.println(findLeaders(nums));  // optimized result
+        System.out.println(findLeaders(nums1)); // optimized result
+        System.out.println(findLeaders1(nums1)); // brute force result
     }
 
 }
