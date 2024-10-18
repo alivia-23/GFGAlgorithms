@@ -13,7 +13,7 @@
 import java.util.List;
 
 /**
- * 1st approach : Time complexity - O(n) Space complexity - O(n)
+ * 1st approach : Time complexity - O(m + n) Space complexity - O(n)
  * create an empty array nums[]
  * compare both the lists and place it in the array -> {1, 1, 2, 3, 4, 4}
  * convert the array to list and return
