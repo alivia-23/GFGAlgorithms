@@ -32,10 +32,13 @@ public class MergeTwoSortedArray {
      * Space Complexity - O(m + n) because we are taking an extra temporary array of size (m + n)
      */
 
-    public static void mergeSort(int[] nums1, int[] nums2, int[] merged, int m, int n) {
+    public static int[] mergeSort(int[] nums1, int[] nums2) {
+        int m = nums1.length;
+        int n = nums2.length;
         int i = m - 1;  // tracks nums1
         int j = n - 1;  // tracks nums2
         int k = m + n - 1; // tracks merged array
+        int[] merged = new int[m + n];
 
         while (i >= 0 && j >= 0) {
             if (nums1[i] > nums2[j]) {
@@ -58,25 +61,23 @@ public class MergeTwoSortedArray {
             j--;
             k--;
         }
+        return merged;
     }
 
-    private static void printArray(int[] arr) {
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
-    }
+//    private static void printArray(int[] arr) {
+//        for (int num : arr) {
+//            System.out.print(num + " ");
+//        }
+//    }
 
     public static void main(String[] args) {
         int[] nums1 = {1, 3, 4, 5};
         int[] nums2 = {2, 4, 6, 8};
-        int m = 4;
-        int n = 4;
-        int[] merged = new int[m + n];
-
+        int[] merged = mergeSort(nums1, nums2);
 
         //merge(nums1, nums2, m, n);
-        mergeSort(nums1, nums2, merged, m, n);
-        printArray(merged);
+        System.out.println(Arrays.toString(merged));
+        //printArray(merged);
     }
 
 
