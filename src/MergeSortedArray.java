@@ -10,6 +10,10 @@
  * Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
  * Output: [1,2,2,3,5,6]
  */
+/**
+ * Time complexity - O(m + n) where m is the number of elements in nums1 and n is the number of elements in nums2
+ * Space complexity - 0(1)
+ */
 public class MergeSortedArray {
     public static void merge(int[] nums1, int[] nums2, int n, int m) {
         int i = m - 1; // points to nums1 end element
