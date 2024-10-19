@@ -1,6 +1,10 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
-public class LevelOrderTraversalBinaryTree {
+
+public class ZigZagLevelOrderTraversal {
     class TreeNode {
         int val;
         TreeNode left;
@@ -11,26 +15,31 @@ public class LevelOrderTraversalBinaryTree {
             this.val = val;
         }
     }
+
     /**
      *
      * Time Complexity - O(n)
      * Space complexity - O(n)
      */
 
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    public List<List<Integer>> zigZagLevelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) {
             return result;
         }
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
-
+        boolean left = true;
         while (!queue.isEmpty()) {
-            int curSize = queue.size();
+            int qSize = queue.size();
             List<Integer> curLevel = new ArrayList<>();
-            for (int i = 0; i < curSize; i++) {
+            for (int i = 0; i < qSize; i++) {
                 TreeNode node = queue.poll();
-                curLevel.add(node.val);
+                if (!left) {
+                    curLevel.add(0, node.val);
+                } else {
+                    curLevel.add(node.val);
+                }
                 if (node.left != null) {
                     queue.offer(node.left);
                 }
@@ -39,6 +48,7 @@ public class LevelOrderTraversalBinaryTree {
                 }
             }
             result.add(curLevel);
+            left = !left;
         }
         return result;
     }
