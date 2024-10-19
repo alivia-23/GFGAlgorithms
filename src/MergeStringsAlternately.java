@@ -17,7 +17,11 @@ public class MergeStringsAlternately {
      *
      */
 
-    // Two pointer approach
+    /**
+     * Two pointer approach
+     * Time complexity - O(m + n)
+     * Space complexity - O(n)
+     */
     public static String merge(String word1, String word2) {
         int m = word1.length();
         int n = word2.length();
@@ -39,7 +43,11 @@ public class MergeStringsAlternately {
         return sb.toString();
     }
 
-    // one pointer approach
+    /**
+     * One pointer approach
+     * Time complexity - O(m + n)
+     * Space complexity - O(n)
+     */
     public static String mergeOnePointer(String word1, String word2) {
         int m = word1.length();
         int n = word2.length();
