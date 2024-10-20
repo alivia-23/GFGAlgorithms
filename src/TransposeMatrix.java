@@ -7,6 +7,12 @@
  * Example 2:
  * Input: matrix = [[1,2,3],[4,5,6]]
  * Output: [[1,4],[2,5],[3,6]]
+ *
+ * Approach:
+ * swap the rows and columns
+ *
+ * Time Complexity - O(r * c)   where r is the number of rows and c is the number of columns
+ * Space complexity - O(r * c)
  */
 public class TransposeMatrix {
     public static int[][] transpose(int[][] matrix) {
