@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 /**
  * The next greater element of some element x in an array is the first greater element that is to the right of x in the same array.
@@ -26,6 +27,7 @@ import java.util.Map;
  *
  * Questions ?
  * 1) How to handle duplicates if any? -> the current problem consists of all unique elements in both the array
+ * 2) All the integers of nums1 contains in nums2
  *
  */
 public class NextGreaterElements {
@@ -54,6 +56,33 @@ public class NextGreaterElements {
             }
         }
         return result;
+    }
+
+    // Optimized Approach
+    // Using stack and map
+    // Map stores each element's next greater element for nums2
+    // Time complexity - O(n) because nums2 scanned only once and entire push and pop exactly once. nums1 also scanned once so all together
+    // its O(n + n + m) -> O(n) { we know length of nums1 is less than nums2 so we can take O(n) as the time complexity}
+    // Space complexity - O(n) {map will store n numbers and stack will also store n numbers}
+    public static int[] nextGreaterElement1(int[] nums1, int[] nums2) {
+        Map<Integer, Integer> map = new HashMap<>();
+        Stack<Integer> stack = new Stack<>();
+
+        for (int num : nums2) {
+            // if stack is not empty and my current element is greater than the element at the top of stack
+            // keep popping from the top of the stack and put in the map with the current number as value(next greater elelment)
+            // until we find a number at the top of stack greater than current element
+            // after that we can happily push the current elelmnt in the stack
+            while (!stack.isEmpty() && num > stack.peek()) {
+                map.put(stack.pop(), num);
+            }
+            stack.push(num);
+        }
+
+        for (int i = 0; i < nums1.length; i++) {
+            nums1[i] = map.getOrDefault(nums1[i], -1);
+        }
+        return nums1;
     }
 
     private static void printArray(int[] result) {
