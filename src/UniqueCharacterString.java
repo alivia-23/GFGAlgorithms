@@ -16,6 +16,23 @@ import java.util.*;
  *
  */
 public class UniqueCharacterString {
+    // Brute Force Approach
+    // Time complexity - O(n * n) - O(n^2)
+    // Space complexity - O(1)
+    public static boolean isUnique0(String s) {
+        if (s == null || s.length() == 0) {
+            return true;
+        }
+        int n = s.length();
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (s.charAt(i) == s.charAt(j)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
     // Approach with set
     // Time complexity - O(n) - n is the number of elements in the string
@@ -61,15 +78,20 @@ public class UniqueCharacterString {
         String s2 = "";
         String s3 = null;
 
+        System.out.println(isUnique0(s));
+        System.out.println(isUnique0(s1));
+        System.out.println(isUnique0(s2));
+        System.out.println(isUnique0(s3));
+
 //        System.out.println(isUnique(s));
 //        System.out.println(isUnique(s1));
 //        System.out.println(isUnique(s2));
 //        System.out.println(isUnique(s3));
-
-        System.out.println(isUnique1(s));
-        System.out.println(isUnique1(s1));
-        System.out.println(isUnique1(s2));
-        System.out.println(isUnique1(s3));
+//
+//        System.out.println(isUnique1(s));
+//        System.out.println(isUnique1(s1));
+//        System.out.println(isUnique1(s2));
+//        System.out.println(isUnique1(s3));
     }
 
 }
