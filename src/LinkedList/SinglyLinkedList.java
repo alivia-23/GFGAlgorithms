@@ -31,8 +31,13 @@ public class SinglyLinkedList {
         fourth.next = null;
 
         sll.printList();
+        System.out.println("");
+        System.out.println("Length of the LinkedList = "+sll.length());
     }
 
+    /**
+     * Function to Print the values in a linkedlist
+     */
     public void printList() {
         ListNode current = head;
         while (current != null) {
@@ -41,6 +46,24 @@ public class SinglyLinkedList {
         }
         System.out.print("null");
     }
+
+    /**
+     * Find the length of a linkedlist
+     */
+    public int length() {
+        if (head == null) {
+            return 0;
+        }
+        ListNode current = head;
+        int count = 0;  // tracks the counts of the nodes
+        while (current != null) {
+            count++;
+            current = current.next;
+        }
+        return count;
+    }
+
+
 
 
 }
