@@ -19,16 +19,23 @@ public class SinglyLinkedList {
 
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();  // as we initialize the singly linkedlist the value of our head is initially null
-        sll.head = new ListNode(10);     // assign head having a value of 10
-        ListNode second = new ListNode(1); // second node having value as 1
-        ListNode third = new ListNode(8); // third node having value as 8
-        ListNode fourth = new ListNode(11); // fourth node having value as 11
+//        sll.head = new ListNode(10);     // assign head having a value of 10
+//        ListNode second = new ListNode(1); // second node having value as 1
+//        ListNode third = new ListNode(8); // third node having value as 8
+//        ListNode fourth = new ListNode(11); // fourth node having value as 11
+//
+//        // Now we connect them together to form a chain
+//        sll.head.next = second;
+//        second.next = third;
+//        third.next = fourth;
+//        fourth.next = null;
 
-        // Now we connect them together to form a chain
-        sll.head.next = second;
-        second.next = third;
-        third.next = fourth;
-        fourth.next = null;
+        sll.insertAtFront(6);
+        sll.insertAtFront(5);
+        sll.insertAtFront(4);
+        sll.insertAtFront(3);
+        sll.insertAtFront(2);
+        sll.insertAtFront(1);
 
         sll.printList();
         System.out.println("");
@@ -63,7 +70,13 @@ public class SinglyLinkedList {
         return count;
     }
 
-
-
+    /**
+     * Function to insert a node at the beginning of a linkedlist
+     */
+    public void insertAtFront(int val) {
+        ListNode newNode = new ListNode(val);
+        newNode.next = head;
+        head = newNode;
+    }
 
 }
