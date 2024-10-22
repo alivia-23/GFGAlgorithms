@@ -30,12 +30,16 @@ public class SinglyLinkedList {
 //        third.next = fourth;
 //        fourth.next = null;
 
-        sll.insertAtFront(6);
-        sll.insertAtFront(5);
-        sll.insertAtFront(4);
-        sll.insertAtFront(3);
-        sll.insertAtFront(2);
-        sll.insertAtFront(1);
+//        sll.insertAtFront(6);
+//        sll.insertAtFront(5);
+//        sll.insertAtFront(4);
+//        sll.insertAtFront(3);
+//        sll.insertAtFront(2);
+//        sll.insertAtFront(1);
+        sll.insertAtEnd(10);
+        sll.insertAtEnd(15);
+        sll.insertAtEnd(25);
+        sll.insertAtEnd(30);
 
         sll.printList();
         System.out.println("");
@@ -71,12 +75,29 @@ public class SinglyLinkedList {
     }
 
     /**
-     * Function to insert a node at the beginning of a linkedlist
+     * Function to insert a node at the Beginning of a linkedlist
      */
     public void insertAtFront(int val) {
         ListNode newNode = new ListNode(val);
         newNode.next = head;
         head = newNode;
+    }
+
+    /**
+     * Function to insert a node at the End of a linkedlist
+     */
+    public void insertAtEnd(int val) {
+        ListNode newNode = new ListNode(val);
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+        ListNode current = head; // temporary current node which keeps traversing through the list until it finds a node whose next is pointing to null
+        while (current.next != null) {
+            current = current.next;
+        }
+        // if the condition is met that means we've found the node whose next pointer is null so we'll attach our node with that
+        current.next = newNode;
     }
 
 }
