@@ -56,7 +56,11 @@ public class SinglyLinkedList {
 //        sll.deleteLast();
 //        sll.deleteLast();
 
-        sll.deleteAtIndex(2);
+//        sll.deleteAtIndex(4);
+
+
+        System.out.println(sll.searchElement(7));
+        System.out.println(sll.searchElement(20));
 
         sll.printList();
         System.out.println("");
@@ -171,12 +175,12 @@ public class SinglyLinkedList {
     /**
      * Delete a node at given position
      */
-    public ListNode deleteAtIndex(int index) {
+    public void deleteAtIndex(int index) {
         ListNode current = head;
         int count = 1;
 
         if (head == null) {
-            return head;
+            return;
         }
 
         while (count < index - 1) {
@@ -184,7 +188,28 @@ public class SinglyLinkedList {
             count++;
         }
         current.next = current.next.next;
-        return head;
     }
+
+    /**
+     * Search an element in a linkedlist
+     */
+    public boolean searchElement(int val) {
+        if (head == null) {
+            return false;
+        }
+        ListNode current = head;
+        while (current != null) {
+            if (current.val == val) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+    /**
+     * Reverse a linkedlist
+     */
+    
 
 }
