@@ -21,16 +21,16 @@ public class SinglyLinkedList {
 
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();  // as we initialize the singly linkedlist the value of our head is initially null
-//        sll.head = new ListNode(10);     // assign head having a value of 10
-//        ListNode second = new ListNode(1); // second node having value as 1
-//        ListNode third = new ListNode(8); // third node having value as 8
-//        ListNode fourth = new ListNode(11); // fourth node having value as 11
-//
-//        // Now we connect them together to form a chain
-//        sll.head.next = second;
-//        second.next = third;
-//        third.next = fourth;
-//        fourth.next = null;
+        sll.head = new ListNode(10);     // assign head having a value of 10
+        ListNode second = new ListNode(1); // second node having value as 1
+        ListNode third = new ListNode(8); // third node having value as 8
+        ListNode fourth = new ListNode(11); // fourth node having value as 11
+
+        // Now we connect them together to form a chain
+        sll.head.next = second;
+        second.next = third;
+        third.next = fourth;
+        fourth.next = null;
 
 //        sll.insertAtFront(6);
 //        sll.insertAtFront(5);
@@ -43,12 +43,12 @@ public class SinglyLinkedList {
 //        sll.insertAtEnd(25);
 //        sll.insertAtEnd(30);
 
-        sll.insertAtIndex(8, 1);
-        sll.insertAtIndex(10, 2);
-        sll.insertAtIndex(20, 3);
-        sll.insertAtIndex(5, 4);
-        sll.insertAtIndex(6, 3);
-        sll.insertAtIndex(2, 2);
+//        sll.insertAtIndex(8, 1);
+//        sll.insertAtIndex(10, 2);
+//        sll.insertAtIndex(20, 3);
+//        sll.insertAtIndex(5, 4);
+//        sll.insertAtIndex(6, 3);
+//        sll.insertAtIndex(2, 2);
 
 //        sll.deleteFirst(); // deletes 8
 //        sll.deleteFirst(); // deletes 2
@@ -59,8 +59,10 @@ public class SinglyLinkedList {
 //        sll.deleteAtIndex(4);
 
 
-        System.out.println(sll.searchElement(7));
-        System.out.println(sll.searchElement(20));
+//        System.out.println(sll.searchElement(7));
+//        System.out.println(sll.searchElement(20));
+
+        //sll.reverseList();
 
         sll.printList();
         System.out.println("");
@@ -210,6 +212,20 @@ public class SinglyLinkedList {
     /**
      * Reverse a linkedlist
      */
+    public ListNode reverseList(ListNode head) {
+        if (head == null) {
+            return head;
+        }
+        ListNode current = head;
+        ListNode previous = null;
+        ListNode next = null;
+        while (current != null) {
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        return previous;
+    }
     
-
 }
