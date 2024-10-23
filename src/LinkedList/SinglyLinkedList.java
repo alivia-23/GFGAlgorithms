@@ -227,5 +227,21 @@ public class SinglyLinkedList {
         }
         return previous;
     }
-    
+
+    /**
+     * Find the middle of a linkedlist
+     */
+    public ListNode findMiddle(ListNode head) {
+        if (head == null) {
+            return head;
+        }
+        ListNode fast = head;
+        ListNode slow = head;
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
 }
