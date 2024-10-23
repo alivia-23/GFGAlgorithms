@@ -1,5 +1,7 @@
 package LinkedList;
 
+import java.util.List;
+
 /**
  * A singly linkedlist is a data structure which stores collection of data
  *
@@ -36,10 +38,22 @@ public class SinglyLinkedList {
 //        sll.insertAtFront(3);
 //        sll.insertAtFront(2);
 //        sll.insertAtFront(1);
-        sll.insertAtEnd(10);
-        sll.insertAtEnd(15);
-        sll.insertAtEnd(25);
-        sll.insertAtEnd(30);
+//        sll.insertAtEnd(10);
+//        sll.insertAtEnd(15);
+//        sll.insertAtEnd(25);
+//        sll.insertAtEnd(30);
+
+        sll.insertAtIndex(8, 1);
+        sll.insertAtIndex(10, 2);
+        sll.insertAtIndex(20, 3);
+        sll.insertAtIndex(5, 4);
+        sll.insertAtIndex(6, 3);
+        sll.insertAtIndex(2, 2);
+
+//        sll.deleteFirst(); // deletes 8
+//        sll.deleteFirst(); // deletes 2
+
+        sll.deleteLast();
 
         sll.printList();
         System.out.println("");
@@ -99,5 +113,61 @@ public class SinglyLinkedList {
         // if the condition is met that means we've found the node whose next pointer is null so we'll attach our node with that
         current.next = newNode;
     }
+
+    /**
+     * Function to insert a node at a given position
+     */
+    public void insertAtIndex(int val, int index) {
+        ListNode node = new ListNode(val);
+        if (index == 1) {
+            node.next = head;
+            head = node;
+        } else {
+            ListNode prev = head;
+            int count = 1;
+            while (count < index - 1) {
+                count++;
+                prev = prev.next;
+            }
+            ListNode current = prev.next;
+            prev.next = node;
+            node.next = current;
+        }
+    }
+
+    /**
+     * Function to delete first node from a linkedlist
+     */
+    public ListNode deleteFirst() {
+        if (head == null) {
+            return null;
+        }
+        ListNode temp = head;
+        head = head.next;
+        temp.next = null;
+        return head;
+    }
+
+    /**
+     * Delete last node of a linkedlist
+     */
+    public ListNode deleteLast() {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode current = head;
+        ListNode previous = null;
+        while (current.next != null) {
+            previous = current;
+            current = current.next;
+        }
+        previous.next = null;
+        return current;
+    }
+
+    /**
+     * Delete a node at given position
+     */
+
 
 }
