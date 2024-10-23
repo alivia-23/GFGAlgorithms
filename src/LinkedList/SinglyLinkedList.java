@@ -53,7 +53,10 @@ public class SinglyLinkedList {
 //        sll.deleteFirst(); // deletes 8
 //        sll.deleteFirst(); // deletes 2
 
-        sll.deleteLast();
+//        sll.deleteLast();
+//        sll.deleteLast();
+
+        sll.deleteAtIndex(2);
 
         sll.printList();
         System.out.println("");
@@ -168,6 +171,20 @@ public class SinglyLinkedList {
     /**
      * Delete a node at given position
      */
+    public ListNode deleteAtIndex(int index) {
+        ListNode current = head;
+        int count = 1;
 
+        if (head == null) {
+            return head;
+        }
+
+        while (count < index - 1) {
+            current = current.next;
+            count++;
+        }
+        current.next = current.next.next;
+        return head;
+    }
 
 }
