@@ -25,12 +25,14 @@ public class SinglyLinkedList {
         ListNode second = new ListNode(1); // second node having value as 1
         ListNode third = new ListNode(8); // third node having value as 8
         ListNode fourth = new ListNode(11); // fourth node having value as 11
+        ListNode fifth = new ListNode(20); // fourth node having value as 11
 
         // Now we connect them together to form a chain
         sll.head.next = second;
         second.next = third;
         third.next = fourth;
-        fourth.next = null;
+        fourth.next = fifth;
+        fifth.next = null;
 
 //        sll.insertAtFront(6);
 //        sll.insertAtFront(5);
@@ -67,6 +69,10 @@ public class SinglyLinkedList {
         sll.printList();
         System.out.println("");
         System.out.println("Length of the LinkedList = "+sll.length());
+
+        // Get Nth node from End of a linkedlist
+        ListNode nthNode = sll.findNthNode(sll.head, 2);
+        System.out.println(nthNode.val); // print nth node from last
     }
 
     /**
@@ -244,4 +250,26 @@ public class SinglyLinkedList {
         }
         return slow;
     }
+
+    /**
+     * Find nth node from the end of a linkedlist
+     */
+    public ListNode findNthNode(ListNode head, int n) {
+        if (head == null) {
+            return null;
+        }
+        ListNode fast = head;
+        ListNode slow = head;
+        int count = 1;
+        while (count <= n) {
+            fast = fast.next;
+            count++;
+        }
+        while (fast != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+
 }
