@@ -73,6 +73,10 @@ public class SinglyLinkedList {
         // Get Nth node from End of a linkedlist
         ListNode nthNode = sll.findNthNode(sll.head, 2);
         System.out.println(nthNode.val); // print nth node from last
+
+        // Remove nth node
+        ListNode head = sll.removeNthFromEnd(sll.head, 2);
+        System.out.println(head);
     }
 
     /**
@@ -270,6 +274,29 @@ public class SinglyLinkedList {
             slow = slow.next;
         }
         return slow;
+    }
+
+    /**
+     * Remove nth node from end of linkedlist
+     */
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        if (head == null) {
+            return head;
+        }
+        ListNode fast = head;
+        ListNode slow = head;
+        int count = 1;
+
+        while (count <= n + 1) {
+            fast = fast.next;
+            count++;
+        }
+        while (fast != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        slow.next = slow.next.next;
+        return head;
     }
 
 }
