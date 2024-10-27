@@ -12,7 +12,7 @@ import java.util.*;
  * Output: 9
  */
 public class LongestConsecutiveSequence {
-    public int longestConsecutive(int[] nums) {
+    public static int longestConsecutive(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
         if (nums.length == 1) return 1;
 
@@ -35,9 +35,50 @@ public class LongestConsecutiveSequence {
             // update max length
             maxLength = Math.max(maxLength, curLength);
         }
-
         return maxLength;
+    }
 
+
+    /**
+     * Optimized Approach
+     * Time Complexity - O(n)
+     * Space Complexity - O(n)
+     */
+    public static int longestConseutiveSequence1(int[] nums) {
+        if (nums == null || nums.length == 0) return 0;
+        if (nums.length == 1) return 1;
+
+        Set<Integer> set = new HashSet<>();
+        int maxLength = 0;
+        // add all the elements in the set
+        for (int num : nums) {
+            set.add(num);
+        }
+
+        // iterate over the nums array and try to find the starting element of a sequence
+        // basically check if the cur element's previous element exists or not
+        // if not exist then this element could be the starting element of a sequence
+
+        for (int num : nums) {
+            if (!set.contains(num - 1)) {
+                int curNum = num;
+                int length = 1;
+
+                while (set.contains(curNum + 1)) {
+                    length++;
+                    curNum++;
+                }
+                maxLength = Math.max(maxLength, length);
+            }
+        }
+        return maxLength;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {100,4,200,1,3,2};
+        int[] nums1 = {0,3,7,2,5,8,4,6,0,1};
+        int result = longestConseutiveSequence1(nums1);
+        System.out.println(result);
     }
 
 
