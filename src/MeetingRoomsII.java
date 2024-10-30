@@ -14,6 +14,9 @@ import java.util.PriorityQueue;
  * Constraints:
  * 1 <= intervals.length <= 104
  * 0 <= starti < endi <= 106
+ *
+ * Time Complexity - O(nlogn + nlogn) -> O(nlogn)
+ * Space Complexity - O(n)
  */
 public class MeetingRoomsII {
     public static int maxMeetingRooms(int[][] intervals) {
