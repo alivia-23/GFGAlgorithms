@@ -12,6 +12,7 @@ public class MyStack {
         queue = new LinkedList<>();
     }
 
+    // O(n) time complexity as we are removeing n - 1 elelments from the queue and adding back at the end of the quque
     public void push(int x) {
         queue.add(x);
         for (int i = 1; i <= queue.size() - 1; i++) {
