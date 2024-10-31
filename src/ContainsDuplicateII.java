@@ -16,6 +16,8 @@ import java.util.Set;
  */
 public class ContainsDuplicateII {
 
+    // Time complexity - o(n)
+    // Space complexity - o(min(n, k))
     public static boolean containsDuplicate(int[] nums, int k) {
         Set<Integer> set = new HashSet<>();
 
