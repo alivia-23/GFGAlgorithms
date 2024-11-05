@@ -1,3 +1,5 @@
+package Array;
+
 /**
  *  3 * 4 mstrix
  *  a. Compute row average
